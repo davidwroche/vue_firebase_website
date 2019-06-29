@@ -6,14 +6,17 @@ import router from './router';
 Vue.config.productionTip = false;
 
 let app = '';
+
 const config = {
-  apiKey: 'YOUR_API_KEY',
-  authDomain: 'YOUR_PROJECT_ID.firebaseapp.com',
-  databaseURL: 'https://YOUR_PROJECT_ID.firebaseio.com',
-  projectId: 'YOUR_PROJECT_ID',
-  storageBucket: 'YOUR_PROJECT_ID.appspot.com',
-  messagingSenderId: 'YOUR_MESSAGING_SEND_ID'
+  apiKey: "AIzaSyALmEZm282yVzAj5sDrfDSYqzBngzYi7f4",
+  authDomain: "haggle-ed012.firebaseapp.com",
+  databaseURL: "https://haggle-ed012.firebaseio.com",
+  projectId: "haggle-ed012",
+  storageBucket: "haggle-ed012.appspot.com",
+  messagingSenderId: "134305249546",
+  appId: "1:134305249546:web:b6c179f2452c0c19"
 };
+
 
 firebase.initializeApp(config);
 
