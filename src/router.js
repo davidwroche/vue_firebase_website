@@ -5,6 +5,7 @@ import Router from 'vue-router';
 import Home from '@/views/Home';
 import Login from '@/views/Login';
 import SignUp from '@/views/SignUp';
+import Landing from "@/views/Landing";
 
 Vue.use(Router);
 
@@ -16,7 +17,8 @@ const router = new Router({
     },
     {
       path: '/',
-      redirect: '/login'
+      name: 'Landing',
+      component: Landing
     },
     {
       path: '/login',
