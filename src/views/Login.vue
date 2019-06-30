@@ -10,6 +10,7 @@
 
 <script>
   import firebase from 'firebase';
+  import store from "../store/store";
 
   export default {
     name: 'login',
@@ -23,6 +24,7 @@
       login: function() {
         firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(
           (user) => {
+            store.addUserAction(user)
             this.$router.replace('home')
           },
           (err) => {
