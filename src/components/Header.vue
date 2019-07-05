@@ -36,10 +36,10 @@
                 <router-link to="/login" class="nav-link">Login</router-link>
                 </li>
                 <li class="nav-item" v-if="auth == null">
-                <router-link to="/signup" class="nav-link">Register</router-link>
+                <router-link to="/sign-up" class="nav-link">Register</router-link>
                 </li>
                 <li class="nav-item" v-if="auth !== null">
-                <a class="nav-link" @click="logout">Logout</a>
+                <a class="nav-link" @click="logout" v-bind:style="{'cursor':'pointer'}">Logout</a>
                 </li>
               </ul>
             </span>
@@ -72,7 +72,7 @@ export default {
         .signOut()
         .then(() => {
             this.auth = null
-          //this.$router.replace("landing");
+            this.$router.replace("/");
         });
     }
   },

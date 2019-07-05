@@ -1,17 +1,30 @@
 <template>
   <div class="home">
-    <HelloWorld msg="Welcome to Your Vue.js App" />
-    <div>{{storeState.user}}</div>
-    <button @click="logout">Logout</button>
+         <navHeader></navHeader>
+    <div class="container">
+  <div class="row">
+    <div class="col-sm">
+    {{storeState.user.user.email}}
+    </div>
+    <div class="col-sm">
+      One of three columns
+    </div>
+    <div class="col-sm">
+      One of three columns
+    </div>
+  </div>
+</div>
+    <!-- <button @click="logout">Logout</button> -->
   </div>
 </template>
 
 <script>
 import firebase from "firebase";
 import store from "../store/store";
+  import navHeader from "../components/Header"
+import navFooter from "../components/Footer"
 
 // @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
 
 export default {
   name: "home",
@@ -20,8 +33,9 @@ export default {
       storeState: store.store
     };
   },
-  components: {
-    HelloWorld
+      components:{
+      navHeader,
+      navFooter
   },
   methods: {
     logout: function() {

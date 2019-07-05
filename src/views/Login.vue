@@ -1,56 +1,85 @@
 <template>
   <div class="login">
-     <navHeader></navHeader>
+    <navHeader></navHeader>
 
-<form class="form-signin" v-bind:style="{'padding-top':'100px'}">
-  <h1 class="h3 mb-3 font-weight-normal"></h1>
-  <label for="inputEmail" class="sr-only">Email address</label>
-  <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required v-model="email" autofocus v-bind:style="{'margin-bottom':'10px'}">
-  <label for="inputPassword" class="sr-only">Password</label>
-  <input type="password" id="inputPassword" class="form-control" placeholder="Password" required v-model="password" v-bind:style="{'margin-bottom':'10px'}">
-  <p>You don't have an account ? You can <router-link to="/sign-up">create one</router-link></p>
-  <button class="btn btn-lg btn-primary btn-block" @click="login" v-bind:style="{'background-color':'#563D7A'}">Sign in</button>
-  <p class="mt-5 mb-3 text-muted">&copy; 2017-2019</p>
-</form>
+    <form class="form-signin" v-bind:style="{'padding-top':'100px'}">
+      <h1 class="h3 mb-3 font-weight-normal"></h1>
+      <label for="inputEmail" class="sr-only">Email address</label>
+      <input
+        type="email"
+        id="inputEmail"
+        class="form-control"
+        placeholder="Email address"
+        required
+        v-model="email"
+        autofocus
+        v-bind:style="{'margin-bottom':'10px'}"
+      />
+      <label for="inputPassword" class="sr-only">Password</label>
+      <input
+        type="password"
+        id="inputPassword"
+        class="form-control"
+        placeholder="Password"
+        required
+        v-model="password"
+        v-bind:style="{'margin-bottom':'10px'}"
+      />
+      <p>
+        You don't have an account ? You can
+        <router-link to="/sign-up">create one</router-link>
+      </p>
+      <button
+        class="btn btn-lg btn-primary btn-block"
+        @click="login"
+        v-bind:style="{'background-color':'#563D7A'}"
+      >Sign in</button>
+      <p class="mt-5 mb-3 text-muted">&copy; 2017-2019</p>
+    </form>
+    <navFooter></navFooter>
   </div>
 </template>
 
 <script>
-  import firebase from 'firebase';
-  import store from "../store/store";
-  import navHeader from "../components/Header"
-import navFooter from "../components/Footer"
+import firebase from "firebase";
+import store from "../store/store";
+import navHeader from "../components/Header";
+import navFooter from "../components/Footer";
 
-  export default {
-    name: 'login',
-    data() {
-      return {
-        email: '',
-        password: ''
-      }
-    },
-      components:{
-      navHeader,
-      navFooter
+export default {
+  name: "login",
+  data() {
+    return {
+      email: "",
+      password: ""
+    };
   },
-    methods: {
-      login: function() {
-        firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(
-          (user) => {
-            store.addUserAction(user)
-            this.$router.replace('home')
+  components: {
+    navHeader,
+    navFooter
+  },
+  methods: {
+    login: function() {
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(this.email, this.password)
+        .then(
+          user => {
+            store.addUserAction(user);
+            this.$router.replace("home");
           },
-          (err) => {
-            alert('Oops. ' + err.message)
+          err => {
+            alert("Oops. " + err.message);
           }
         );
-      }
     }
   }
+};
 </script>
 
-<style scoped>  /* "scoped" attribute limit the CSS to this component only */
-  html,
+<style scoped>
+/* "scoped" attribute limit the CSS to this component only */
+html,
 body {
   height: 100%;
 }
