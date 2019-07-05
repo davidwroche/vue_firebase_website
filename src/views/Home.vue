@@ -38,6 +38,7 @@ export default {
       store.store = JSON.parse(localStorage.getItem("AppStore"));
       console.log("setting", store.store);
     }
+
   }
 };
 </script>

@@ -6,6 +6,7 @@ import Home from '@/views/Home';
 import Login from '@/views/Login';
 import SignUp from '@/views/SignUp';
 import Landing from "@/views/Landing";
+import Pricing from "@/views/Pricing";
 
 Vue.use(Router);
 
@@ -19,6 +20,11 @@ const router = new Router({
       path: '/',
       name: 'Landing',
       component: Landing
+    },
+    {
+      path: '/pricing',
+      name: 'Pricing',
+      component: Pricing
     },
     {
       path: '/login',
@@ -45,7 +51,7 @@ router.beforeEach((to, from, next) => {
   const currentUser = firebase.auth().currentUser;
   const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
 
-  if (requiresAuth && !currentUser) next('login');
+  if (requiresAuth && !currentUser) next('/');
   else if (!requiresAuth && currentUser) next('home');
   else next();
 });
