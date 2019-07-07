@@ -41,8 +41,9 @@
 
  <script>
 import firebase from "firebase";
-import navHeader from "../components/Header";
+import navHeader from "../components/Header"; 
 import navFooter from "../components/Footer";
+import firebaseModule from "../firebase"
 
 export default {
   name: "signUp",
@@ -58,17 +59,7 @@ export default {
   },
   methods: {
     signUp: function() {
-      firebase
-        .auth()
-        .createUserWithEmailAndPassword(this.email, this.password)
-        .then(
-          user => {
-            this.$router.replace("home");
-          },
-          err => {
-            alert("Oops. " + err.message);
-          }
-        );
+     firebaseModule.firebaseRegister(this)
     }
   }
 };

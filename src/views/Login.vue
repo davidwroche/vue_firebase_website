@@ -45,6 +45,7 @@ import firebase from "firebase";
 import store from "../store/store";
 import navHeader from "../components/Header";
 import navFooter from "../components/Footer";
+import firebaseModule from "../firebase"
 
 export default {
   name: "login",
@@ -60,18 +61,7 @@ export default {
   },
   methods: {
     login: function() {
-      firebase
-        .auth()
-        .signInWithEmailAndPassword(this.email, this.password)
-        .then(
-          user => {
-            store.addUserAction(user);
-            this.$router.replace("home");
-          },
-          err => {
-            alert("Oops. " + err.message);
-          }
-        );
+      firebaseModule.firebaseLogin(this)
     }
   }
 };
